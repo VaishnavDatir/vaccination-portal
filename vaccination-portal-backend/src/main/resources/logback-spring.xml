@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!-- Define the common pattern as a property -->
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss:SSS} [%level] - %t %c{0}:%L - %m%n" />
 
-    <!-- ✅ Appender Definitions FIRST -->
 
     <!-- Console appender configuration -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -33,9 +31,7 @@
         </encoder>
     </appender>
 
-    <!-- ✅ Then the loggers -->
 
-    <!-- Logger configuration for your package -->
     <logger name="com.school.vaccineportal" level="DEBUG" />
 
     <!-- Root logger configuration -->

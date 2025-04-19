@@ -1,28 +1,50 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
-    <bean class="java.util.HashMap" id="queries">
-        <constructor-arg>
-            <map>
-                <entry key="CHECK_SYSTEM_ACCOUNT"
-                    value="select a.EVENT_TYPE from 
-					(SELECT
-						 ttd.lane_tx_id , ttd.etc_account_id, tvte.EVENT_TYPE
-					FROM
-						fpms.t_transaction_dispute ttd,
-						ibts.t_viol_tx             tvt,
-						crm.v_etc_account          vea,
-						ibts.t_viol_tx_event       tvte
-					WHERE
-							ttd.lane_tx_id (+) = tvt.lane_tx_id
-							and tvte.lane_tx_id =tvt.lane_tx_id
-						AND ttd.lane_tx_id = :LANE_TX_ID   
-						AND ttd.etc_account_id = vea.etc_account_id
-						AND vea.account_type_cd = :ACCOUNT_TYPE_CD  
-						order by tvte.event_timestamp desc) a
-					   where    ROWNUM = 1">
-                </entry>
-            </map>
-        </constructor-arg>
-    </bean>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean class="java.util.HashMap" id="queries">
+		<constructor-arg>
+			<map>
+				<!-- T_STUDENT Database queries [START] -->
+				<entry key="ADD_NEW_STUDENT"
+					value="INSERT INTO T_STUDENTS (FIRST_NAME, LAST_NAME, GENDER, GRADE, EMAIL, ROLL_NO) 
+                  						 VALUES (:FIRST_NAME, :LAST_NAME, :GENDER, :GRADE, :EMAIL, :ROLL_NO)" />
+
+				<entry key="GET_ALL_STUDENTS"
+					value="SELECT * FROM T_STUDENTS" />
+
+				<entry key="GET_STUDENT_BY_ID"
+					value="SELECT * FROM T_STUDENTS WHERE STUDENT_ID = :STUDENT_ID" />
+
+				<entry key="UPDATE_STUDENT"
+					value="UPDATE T_STUDENTS
+					SET FIRST_NAME = :FIRST_NAME, LAST_NAME = :LAST_NAME, GENDER=:GENDER, 
+					GRADE = :GRADE, EMAIL = :EMAIL, ROLL_NO = :ROLL_NO
+					WHERE STUDENT_ID = :STUDENT_ID" />
+
+				<entry key="DELETE_STUDENT"
+					value="DELETE FROM T_STUDENTS WHERE STUDENT_ID = :STUDENT_ID" />
+
+				<!-- T_STUDENT Database queries [END] -->
+
+				<entry key="UPDATE_VACCINATION_STATUS"
+					value="UPDATE students SET vaccinated_status = :vaccinatedStatus, vaccination_date = :vaccinationDate 
+                   WHERE student_id = :studentId" />
+
+				<entry key="CREATE_VACCINATION_DRIVE"
+					value="INSERT INTO vaccination_drives (vaccine_name, drive_date, start_date, end_date, available_doses, grade_eligibility) 
+                   VALUES (:vaccineName, :driveDate, :startDate, :endDate, :availableDoses, :gradeEligibility)" />
+
+				<entry key="GET_ALL_VACCINATION_DRIVES"
+					value="SELECT * FROM vaccination_drives" />
+
+				<entry key="CREATE_VACCINATION_RECORD"
+					value="INSERT INTO vaccination_records (student_id, drive_id, vaccine_name, vaccination_date, dose_number, status) 
+                   VALUES (:studentId, :driveId, :vaccineName, :vaccinationDate, :doseNumber, :status)" />
+
+				<entry key="GET_VACCINATION_RECORD"
+					value="SELECT * FROM vaccination_records WHERE student_id = :studentId AND drive_id = :driveId" />
+
+			</map>
+		</constructor-arg>
+	</bean>
 </beans>
