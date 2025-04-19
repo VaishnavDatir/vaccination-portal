@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean class="java.util.HashMap" id="queries">
+        <constructor-arg>
+            <map>
+                <entry key="CHECK_SYSTEM_ACCOUNT"
+                    value="select a.EVENT_TYPE from 
+					(SELECT
+						 ttd.lane_tx_id , ttd.etc_account_id, tvte.EVENT_TYPE
+					FROM
+						fpms.t_transaction_dispute ttd,
+						ibts.t_viol_tx             tvt,
+						crm.v_etc_account          vea,
+						ibts.t_viol_tx_event       tvte
+					WHERE
+							ttd.lane_tx_id (+) = tvt.lane_tx_id
+							and tvte.lane_tx_id =tvt.lane_tx_id
+						AND ttd.lane_tx_id = :LANE_TX_ID   
+						AND ttd.etc_account_id = vea.etc_account_id
+						AND vea.account_type_cd = :ACCOUNT_TYPE_CD  
+						order by tvte.event_timestamp desc) a
+					   where    ROWNUM = 1">
+                </entry>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
