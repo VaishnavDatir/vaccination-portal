@@ -14,10 +14,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>vaccination-portal</name>
 	<description>Demo project for Spring Boot</description>
-	<url />
-	<licenses>
-		<license />
-	</licenses>
 	<developers>
 		<developer>
 			<name>Vaishnav Datir</name>
@@ -77,16 +73,6 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>0.12.6</version>
-		</dependency>
-
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
 		</dependency>
 
 		<dependency>

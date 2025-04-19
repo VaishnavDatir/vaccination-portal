@@ -23,6 +23,7 @@ import org.springframework.util.StringUtils;
 
 @Configuration
 public class ActuatorConfig {
+
         @Bean
         public WebMvcEndpointHandlerMapping webEndpointServletHandlerMapping(WebEndpointsSupplier webEndpointsSupplier,
                         ServletEndpointsSupplier servletEndpointsSupplier,

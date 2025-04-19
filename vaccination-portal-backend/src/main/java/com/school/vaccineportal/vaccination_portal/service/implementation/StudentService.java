@@ -18,7 +18,7 @@ public class StudentService implements IStudentService {
 
     private final IStudentDao studentsDao;
 
-    public StudentService(IStudentDao studentsDao) {
+    StudentService(IStudentDao studentsDao) {
         this.studentsDao = studentsDao;
     }
 

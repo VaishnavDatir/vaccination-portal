@@ -27,6 +27,7 @@ public class StudentDao implements IStudentDao {
     }
 
     // Add a new student to the database
+    @Override
     public int addStudent(TStudentsDto student) {
         logger.debug("adding new student: {}", student.getRollNo());
 
@@ -47,6 +48,7 @@ public class StudentDao implements IStudentDao {
     }
 
     // Get a student by their ID
+    @Override
     public TStudentsDto getStudentById(Integer studentId) {
         String query = LoadJdbcQueries.getQueryById("GET_STUDENT_BY_ID");
 
@@ -65,6 +67,7 @@ public class StudentDao implements IStudentDao {
     }
 
     // Get all students
+    @Override
     public List<TStudentsDto> getAllStudents() {
         String query = LoadJdbcQueries.getQueryById("GET_ALL_STUDENTS");
 
@@ -74,6 +77,7 @@ public class StudentDao implements IStudentDao {
     }
 
     // Update a student's details
+    @Override
     public int updateStudent(TStudentsDto student) {
         String query = LoadJdbcQueries.getQueryById("UPDATE_STUDENT");
 
@@ -95,6 +99,7 @@ public class StudentDao implements IStudentDao {
     }
 
     // Delete a student by their ID
+    @Override
     public int deleteStudent(Integer studentId) {
         String query = LoadJdbcQueries.getQueryById("DELETE_STUDENT");
 

@@ -22,14 +22,14 @@ import com.school.vaccineportal.vaccination_portal.service.IStudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@Api(tags = "Student Management APIs")
 @RestController
 @RequestMapping("/api/students")
-@Api(tags = "Student Management APIs")
 public class StudentController {
     private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
     private final IStudentService studentService;
 
-    public StudentController(IStudentService studentService) {
+    StudentController(IStudentService studentService) {
         this.studentService = studentService;
     }
 

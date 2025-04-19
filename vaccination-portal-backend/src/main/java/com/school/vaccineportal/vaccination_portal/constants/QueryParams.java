@@ -23,4 +23,6 @@ public class QueryParams {
     public static final String GRADE_ELIGIBILITY = "GRADE_ELIGIBILITY";
     public static final String DOSE_NUMBER = "DOSE_NUMBER";
     public static final String STATUS = "STATUS";
+
+    public static final String RECORD_ID = "RECORD_ID";
 }
