@@ -2,11 +2,14 @@ package com.school.vaccineportal.vaccination_portal.model;
 
 import org.springframework.http.HttpStatus;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class ApiResponse<T> {
     private boolean success;
     private String message;
     private T data;
     private HttpStatus status;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer totalCount; // Optional - only for paginated responses
 
     public ApiResponse() {

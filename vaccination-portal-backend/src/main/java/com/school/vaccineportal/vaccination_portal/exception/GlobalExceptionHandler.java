@@ -12,6 +12,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -131,5 +133,23 @@ public class GlobalExceptionHandler {
         response.setMessage("Access Denied: " + ex.getMessage());
         response.setStatus(HttpStatus.FORBIDDEN);
         return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ApiResponse<String>> handleBadCredentials(BadCredentialsException ex) {
+        return buildError("Invalid username or password", HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ApiResponse<String>> handleAuthException(AuthenticationException ex) {
+        return buildError("Authentication failed", HttpStatus.UNAUTHORIZED);
+    }
+
+    private ResponseEntity<ApiResponse<String>> buildError(String message, HttpStatus status) {
+        ApiResponse<String> response = new ApiResponse<>();
+        response.setSuccess(false);
+        response.setMessage(message);
+        response.setStatus(status);
+        return new ResponseEntity<>(response, status);
     }
 }
