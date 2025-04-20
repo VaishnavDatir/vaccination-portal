@@ -7,6 +7,7 @@ public class ApiResponse<T> {
     private String message;
     private T data;
     private HttpStatus status;
+    private Integer totalCount; // Optional - only for paginated responses
 
     public ApiResponse() {
     }
@@ -24,6 +25,16 @@ public class ApiResponse<T> {
 
     public static <T> ApiResponse<T> error(String message, HttpStatus status) {
         return new ApiResponse<>(false, message, null, status);
+    }
+
+    public static <T> ApiResponse<T> success(T data, HttpStatus status, Integer totalCount) {
+        ApiResponse<T> response = new ApiResponse<>();
+        response.setSuccess(true);
+        response.setMessage("Success");
+        response.setData(data);
+        response.setStatus(status);
+        response.setTotalCount(totalCount);
+        return response;
     }
 
     public boolean isSuccess() {
@@ -58,10 +69,18 @@ public class ApiResponse<T> {
         this.status = status;
     }
 
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+    }
+
     @Override
     public String toString() {
         return "ApiResponse [success=" + success + ", message=" + message + ", data=" + data + ", status=" + status
-                + "]";
+                + ", totalCount=" + totalCount + "]";
     }
 
 }

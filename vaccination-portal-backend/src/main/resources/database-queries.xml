@@ -100,6 +100,39 @@
 
 				<!-- DASHBOARD Queries [END] -->
 
+				<!-- Report Queries {Start} -->
+				<entry key="GET_VACCINATION_REPORT"
+					value="		SELECT 
+									s.first_name AS firstName,
+									s.last_name AS lastName,
+									s.grade AS grade,
+									s.roll_no AS rollNo,
+									s.email AS email,
+									d.vaccine_name AS vaccineName,
+									r.vaccination_date AS vaccinationDate,
+									r.status AS status
+								FROM 
+									t_students s
+								JOIN 
+									t_student_vaccination_records r ON s.student_id = r.student_id
+								JOIN 
+									t_vaccination_drives d ON r.drive_id = d.drive_id
+								WHERE 
+									(:VACCINE_NAME IS NULL OR d.vaccine_name = :VACCINE_NAME)
+								ORDER BY 
+									r.vaccination_date DESC
+								LIMIT :LIMIT OFFSET :OFFSET"
+				/>
+
+				<entry key="GET_VACCINATION_REPORT_COUNT"
+					value="SELECT COUNT(*) 
+							FROM t_students s
+							JOIN t_student_vaccination_records r ON s.student_id = r.student_id
+							JOIN t_vaccination_drives d ON r.drive_id = d.drive_id
+							WHERE (:VACCINE_NAME IS NULL OR d.vaccine_name = :VACCINE_NAME)"
+				/>
+				<!-- Report Queries {End} -->
+
 			</map>
 		</constructor-arg>
 	</bean>

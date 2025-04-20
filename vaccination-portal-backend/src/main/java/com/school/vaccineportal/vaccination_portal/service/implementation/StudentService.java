@@ -1,14 +1,23 @@
 package com.school.vaccineportal.vaccination_portal.service.implementation;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.school.vaccineportal.vaccination_portal.dto.TStudentsDto;
 import com.school.vaccineportal.vaccination_portal.exception.InvalidInputException;
 import com.school.vaccineportal.vaccination_portal.exception.ResourceNotFoundException;
+import com.school.vaccineportal.vaccination_portal.model.BulkUploadResponse;
 import com.school.vaccineportal.vaccination_portal.repository.IStudentDao;
 import com.school.vaccineportal.vaccination_portal.service.IStudentService;
 
@@ -76,6 +85,42 @@ public class StudentService implements IStudentService {
         }
 
         studentsDao.deleteStudent(studentId);
+    }
+
+    public BulkUploadResponse bulkUploadStudentsFromCsv(MultipartFile file) {
+        List<String> failedRecords = new ArrayList<>();
+        int successCount = 0;
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
+                CSVParser csvParser = CSVParser.parse(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+
+            for (CSVRecord csvRecord : csvParser) {
+                try {
+                    TStudentsDto student = new TStudentsDto();
+                    student.setFirstName(csvRecord.get("firstName").trim());
+                    student.setLastName(csvRecord.get("lastName").trim());
+                    student.setGrade(csvRecord.get("grade").trim());
+                    student.setEmail(csvRecord.get("email").trim());
+                    student.setRollNo(csvRecord.get("rollNo").trim());
+
+                    studentsDao.addStudent(student);
+                    successCount++;
+
+                } catch (Exception ex) {
+                    failedRecords.add("Row " + csvRecord.getRecordNumber() + ": " + ex.getMessage());
+                }
+            }
+
+        } catch (IOException e) {
+            throw new InvalidInputException("Failed to read CSV file: " + e.getMessage());
+        }
+
+        BulkUploadResponse response = new BulkUploadResponse();
+        response.setSuccessCount(successCount);
+        response.setFailureCount(failedRecords.size());
+        response.setFailedRecords(failedRecords);
+
+        return response;
     }
 
     // Validation logic for student

@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.school.vaccineportal.vaccination_portal.dto.TStudentsDto;
 import com.school.vaccineportal.vaccination_portal.model.ApiResponse;
+import com.school.vaccineportal.vaccination_portal.model.BulkUploadResponse;
 import com.school.vaccineportal.vaccination_portal.service.IStudentService;
 
 import io.swagger.annotations.Api;
@@ -107,5 +110,12 @@ public class StudentController {
         response.setStatus(HttpStatus.OK);
 
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/upload-csv")
+    @ApiOperation("Bulk upload students via CSV")
+    public ResponseEntity<ApiResponse<BulkUploadResponse>> uploadCsv(@RequestParam("file") MultipartFile file) {
+        BulkUploadResponse response = studentService.bulkUploadStudentsFromCsv(file);
+        return ResponseEntity.ok(ApiResponse.success(response, HttpStatus.OK));
     }
 }

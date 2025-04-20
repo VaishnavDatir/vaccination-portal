@@ -25,4 +25,7 @@ public class QueryParams {
     public static final String STATUS = "STATUS";
 
     public static final String RECORD_ID = "RECORD_ID";
+    public static final String OFFSET = "OFFSET";
+    public static final String LIMIT = "LIMIT";
+
 }
