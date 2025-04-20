@@ -157,6 +157,7 @@ Swagger provides detailed documentation for all available endpoints, including r
 
 ## Project structure
 
+```
 ├── src
 │ ├── main
 │ │ ├── java
@@ -201,3 +202,4 @@ Swagger provides detailed documentation for all available endpoints, including r
 │ └── test-classes
 ├── pom.xml # Maven build configuration file
 └── README.md # Project documentation
+```
