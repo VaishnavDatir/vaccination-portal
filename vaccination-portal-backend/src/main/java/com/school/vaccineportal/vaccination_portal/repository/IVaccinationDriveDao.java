@@ -12,11 +12,13 @@ public interface IVaccinationDriveDao {
     public Optional<TVaccinationDrivesDto> getVaccinationDriveById(Integer driveId);
 
     // Get all vaccination drives
-    public List<TVaccinationDrivesDto> getAllVaccinationDrives();
+    public List<TVaccinationDrivesDto> getAllVaccinationDrives(int offset, int limit);
 
     // Update a vaccination drive
     public int updateVaccinationDrive(TVaccinationDrivesDto drive);
 
     // Delete a vaccination drive
     public int deleteVaccinationDrive(Integer driveId);
+
+    public Integer getTotalVaccinationDrivesCount();
 }

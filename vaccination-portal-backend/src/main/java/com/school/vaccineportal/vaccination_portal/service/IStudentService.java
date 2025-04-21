@@ -14,7 +14,7 @@ public interface IStudentService {
     public TStudentsDto getStudentById(Integer studentId);
 
     // Get all students
-    public List<TStudentsDto> getAllStudents();
+    public List<TStudentsDto> getAllStudents(int page, int size);
 
     // Update existing student
     public void updateStudent(TStudentsDto student);
@@ -24,5 +24,7 @@ public interface IStudentService {
 
     // bulk uplad students data from csv
     public BulkUploadResponse bulkUploadStudentsFromCsv(MultipartFile file);
+
+    public int getTotalStudentsCount();
 
 }

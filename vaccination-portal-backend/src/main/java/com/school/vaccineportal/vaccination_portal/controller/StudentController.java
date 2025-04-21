@@ -66,16 +66,22 @@ public class StudentController {
     }
 
     @GetMapping
-    @ApiOperation(value = "Get all students")
-    public ResponseEntity<ApiResponse<List<TStudentsDto>>> getAllStudents() {
-        logger.info("Fetching all students");
-        List<TStudentsDto> students = studentService.getAllStudents();
+    @ApiOperation(value = "Get all students with pagination")
+    public ResponseEntity<ApiResponse<List<TStudentsDto>>> getAllStudents(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        logger.info("Fetching students with pagination - Page: {}, Size: {}", page, size);
+
+        List<TStudentsDto> students = studentService.getAllStudents(page, size);
+        int totalCount = studentService.getTotalStudentsCount();
 
         ApiResponse<List<TStudentsDto>> response = new ApiResponse<>();
         response.setSuccess(true);
-        response.setMessage("All students fetched");
+        response.setMessage("Students fetched with pagination");
         response.setData(students);
         response.setStatus(HttpStatus.OK);
+        response.setTotalCount(totalCount);
 
         return ResponseEntity.ok(response);
     }

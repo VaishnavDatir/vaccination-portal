@@ -2,6 +2,8 @@ package com.school.vaccineportal.vaccination_portal.security;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.crypto.SecretKey;
@@ -23,9 +25,9 @@ import io.jsonwebtoken.security.Keys;
 public class JwtUtil {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
 
-    @Value("${jwt.secret}")
+    @Value("${app.config.jwt.secret}")
     private String jwtSecret;
-    @Value("${jwt.expiration}")
+    @Value("${app.config.jwt.expiration}")
     private int jwtExpirationMs;
     private SecretKey key;
 
@@ -38,13 +40,28 @@ public class JwtUtil {
     }
 
     // Generate JWT token
+    public Map<String, Object> generateTokenResponse(String username) {
+        Date issuedAt = new Date();
+        Date expiration = new Date(issuedAt.getTime() + jwtExpirationMs);
+
+        String token = generateToken(username);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("token", token);
+        response.put("issuedAt", issuedAt);
+        response.put("expiration", expiration);
+
+        return response;
+    }
+
     public String generateToken(String username) {
-        return Jwts.builder()
+        String token = Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
+        return token;
     }
 
     // Get username from JWT token

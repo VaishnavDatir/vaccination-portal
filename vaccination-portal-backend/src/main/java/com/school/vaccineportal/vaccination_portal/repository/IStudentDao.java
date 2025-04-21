@@ -13,11 +13,13 @@ public interface IStudentDao {
     public TStudentsDto getStudentById(Integer studentId);
 
     // Get all students
-    public List<TStudentsDto> getAllStudents();
+    public List<TStudentsDto> getAllStudents(int offset, int limit);
 
     // Update a student's details
     public int updateStudent(TStudentsDto student);
 
     // Delete a student by their ID
     public int deleteStudent(Integer studentId);
+
+    public int getTotalCountOfStudents();
 }

@@ -8,7 +8,9 @@ public interface IVaccinationDriveService {
     public int addVaccinationDrive(TVaccinationDrivesDto vaccinationDrive);
 
     // Get all vaccination drives
-    public List<TVaccinationDrivesDto> getAllVaccinationDrives();
+    public List<TVaccinationDrivesDto> getAllVaccinationDrives(int page, int size);
+
+    public Integer getTotalVaccinationDrivesCount();
 
     // Get vaccination drive by ID
     public TVaccinationDrivesDto getVaccinationDriveById(int driveId);

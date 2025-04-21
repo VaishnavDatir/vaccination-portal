@@ -59,10 +59,13 @@ public class VaccinationDriveDao implements IVaccinationDriveDao {
 
     // Get all vaccination drives
     @Override
-    public List<TVaccinationDrivesDto> getAllVaccinationDrives() {
+    public List<TVaccinationDrivesDto> getAllVaccinationDrives(int offset, int limit) {
         String query = LoadJdbcQueries.getQueryById("GET_ALL_VACCINATION_DRIVES");
         logger.debug("Query for GET_ALL_VACCINATION_DRIVES: {}", query);
-        return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(TVaccinationDrivesDto.class));
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue(QueryParams.LIMIT, limit);
+        params.addValue(QueryParams.OFFSET, offset);
+        return jdbcTemplate.query(query, params, new BeanPropertyRowMapper<>(TVaccinationDrivesDto.class));
     }
 
     // Update a vaccination drive
@@ -98,5 +101,15 @@ public class VaccinationDriveDao implements IVaccinationDriveDao {
         int count = jdbcTemplate.update(query, paramSource);
         logger.info("rows affected in DELETE_VACCINATION_DRIVE: {}", count);
         return count;
+    }
+
+    @Override
+    public Integer getTotalVaccinationDrivesCount() {
+        String query = LoadJdbcQueries.getQueryById("GET_TOTAL_COUNT_VACCINATION_DRIVES");
+
+        MapSqlParameterSource params = new MapSqlParameterSource();
+
+        logger.debug("Counting VACCINATION_DRIVES");
+        return jdbcTemplate.queryForObject(query, params, Integer.class);
     }
 }

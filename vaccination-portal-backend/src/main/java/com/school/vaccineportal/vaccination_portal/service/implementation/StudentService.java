@@ -53,8 +53,15 @@ public class StudentService implements IStudentService {
     }
 
     // Get all students
-    public List<TStudentsDto> getAllStudents() {
-        return studentsDao.getAllStudents();
+    @Override
+    public List<TStudentsDto> getAllStudents(int page, int size) {
+        int offset = page * size;
+        return studentsDao.getAllStudents(offset, size);
+    }
+
+    @Override
+    public int getTotalStudentsCount() {
+        return studentsDao.getTotalCountOfStudents();
     }
 
     // Update existing student

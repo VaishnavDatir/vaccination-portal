@@ -68,12 +68,14 @@ public class StudentDao implements IStudentDao {
 
     // Get all students
     @Override
-    public List<TStudentsDto> getAllStudents() {
+    public List<TStudentsDto> getAllStudents(int offset, int limit) {
         String query = LoadJdbcQueries.getQueryById("GET_ALL_STUDENTS");
-
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue(QueryParams.LIMIT, limit);
+        params.addValue(QueryParams.OFFSET, offset);
         logger.debug("Query for GET_ALL_STUDENTS: {}", query);
 
-        return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(TStudentsDto.class));
+        return jdbcTemplate.query(query, params, new BeanPropertyRowMapper<>(TStudentsDto.class));
     }
 
     // Update a student's details
@@ -112,5 +114,15 @@ public class StudentDao implements IStudentDao {
         int count = jdbcTemplate.update(query, paramSource);
         logger.info("rows affected in DELETE_STUDENT: {}", count);
         return count;
+    }
+
+    @Override
+    public int getTotalCountOfStudents() {
+        String query = LoadJdbcQueries.getQueryById("GET_TOTAL_COUNT_STUDENTS");
+
+        MapSqlParameterSource params = new MapSqlParameterSource();
+
+        logger.debug("Counting totalStudents");
+        return jdbcTemplate.queryForObject(query, params, Integer.class);
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.school.vaccineportal.vaccination_portal.dto.TVaccinationDrivesDto;
@@ -47,11 +48,23 @@ public class VaccinationDriveController {
         }
     }
 
-    @ApiOperation(value = "Get all vaccination drives", response = List.class)
+    @ApiOperation(value = "Get all vaccination drives with pagination", response = List.class)
     @GetMapping
-    public ApiResponse<List<TVaccinationDrivesDto>> getAllVaccinationDrives() {
-        List<TVaccinationDrivesDto> vaccinationDrives = vaccinationDriveService.getAllVaccinationDrives();
-        return ApiResponse.success(vaccinationDrives, HttpStatus.OK);
+    public ApiResponse<List<TVaccinationDrivesDto>> getAllVaccinationDrives(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        List<TVaccinationDrivesDto> drives = vaccinationDriveService.getAllVaccinationDrives(page, size);
+        int totalCount = vaccinationDriveService.getTotalVaccinationDrivesCount();
+
+        ApiResponse<List<TVaccinationDrivesDto>> response = new ApiResponse<>();
+        response.setSuccess(true);
+        response.setMessage("Vaccination drives fetched with pagination");
+        response.setData(drives);
+        response.setStatus(HttpStatus.OK);
+        response.setTotalCount(totalCount);
+
+        return response;
     }
 
     @ApiOperation(value = "Get vaccination drive by ID", response = TVaccinationDrivesDto.class)

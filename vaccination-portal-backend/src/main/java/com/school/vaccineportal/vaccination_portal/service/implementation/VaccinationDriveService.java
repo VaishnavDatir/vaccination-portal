@@ -30,8 +30,14 @@ public class VaccinationDriveService implements IVaccinationDriveService {
 
     // Get all vaccination drives
     @Override
-    public List<TVaccinationDrivesDto> getAllVaccinationDrives() {
-        return vaccinationDriveDao.getAllVaccinationDrives();
+    public List<TVaccinationDrivesDto> getAllVaccinationDrives(int page, int size) {
+        int offset = page * size;
+        return vaccinationDriveDao.getAllVaccinationDrives(offset, size);
+    }
+
+    @Override
+    public Integer getTotalVaccinationDrivesCount() {
+        return vaccinationDriveDao.getTotalVaccinationDrivesCount();
     }
 
     // Get vaccination drive by ID
