@@ -1,6 +1,7 @@
 package com.school.vaccineportal.vaccination_portal.exception;
 
 import java.nio.file.AccessDeniedException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.InputMismatchException;
 import java.util.List;
 

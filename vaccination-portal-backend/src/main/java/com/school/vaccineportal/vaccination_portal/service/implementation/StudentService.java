@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -77,7 +79,13 @@ public class StudentService implements IStudentService {
         }
 
         validateStudentInput(student);
-        studentsDao.updateStudent(student);
+        try {
+
+            studentsDao.updateStudent(student);
+        } catch (ConstraintViolationException e) {
+            throw new ResourceNotFoundException(
+                    "Student with roll no " + student.getRollNo() + " already exists " + student.getStudentId());
+        }
     }
 
     // Delete student
