@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../api/axiosInstance";
 
 export default function AddStudentPage() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function AddStudentPage() {
     };
 
     try {
-      await axios.post("http://localhost:9091/api/students", payload, {
+      await axiosInstance.post("/students", payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

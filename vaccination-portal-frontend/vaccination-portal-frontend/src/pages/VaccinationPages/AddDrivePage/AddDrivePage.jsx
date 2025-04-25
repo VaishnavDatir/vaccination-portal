@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../api/axiosInstance";
 
 export default function AddDrivePage() {
   const navigate = useNavigate();
@@ -28,8 +28,8 @@ export default function AddDrivePage() {
         ...formData,
         availableDoses: parseInt(formData.availableDoses),
       };
-      const response = await axios.post(
-        "http://localhost:9091/api/vaccination-drives",
+      const response = await axiosInstance.post(
+        "/vaccination-drives",
         payload,
         {
           headers: {
@@ -62,12 +62,6 @@ export default function AddDrivePage() {
           <span className="navbar-brand fw-bold fs-4 text-primary">
             🏫 School Vaccination Portal
           </span>
-          <button
-            className="btn btn-outline-dark"
-            onClick={() => navigate("/home")}
-          >
-            🏠 Dashboard
-          </button>
         </div>
       </nav>
 

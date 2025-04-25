@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axiosInstance from "../../../api/axiosInstance";
 
 export default function EditStudentPage() {
   const { studentId } = useParams();
@@ -22,12 +22,9 @@ export default function EditStudentPage() {
 
   const fetchStudent = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:9091/api/students/${studentId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const res = await axiosInstance.get(`/students/${studentId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       const student = res.data.data;
       const gradeValue = student.grade.replace("Grade ", "");
       setFormData({
@@ -55,13 +52,9 @@ export default function EditStudentPage() {
         ...formData,
         grade: `Grade ${formData.grade}`,
       };
-      await axios.put(
-        `http://localhost:9091/api/students/${studentId}`,
-        payload,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      await axiosInstance.put(`/students/${studentId}`, payload, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setMessage("✅ Student updated successfully!");
       setTimeout(() => navigate("/students"), 1500);
     } catch (err) {

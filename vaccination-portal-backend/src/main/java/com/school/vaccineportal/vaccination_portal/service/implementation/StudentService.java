@@ -117,7 +117,7 @@ public class StudentService implements IStudentService {
                     student.setGrade(csvRecord.get("grade").trim());
                     student.setEmail(csvRecord.get("email").trim());
                     student.setRollNo(csvRecord.get("rollNo").trim());
-
+                    student.setGender(csvRecord.get("gender").trim());
                     studentsDao.addStudent(student);
                     successCount++;
 

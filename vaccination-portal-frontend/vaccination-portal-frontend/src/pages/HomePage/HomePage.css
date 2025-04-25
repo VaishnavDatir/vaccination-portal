@@ -1,0 +1,28 @@
+.grade-scroll-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.grade-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Edge */
+}
+
+.grade-card {
+    flex: 0 0 auto;
+    min-width: 180px;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.grade-scroll-wrapper.dragging {
+    cursor: grabbing;
+    user-select: none;
+}

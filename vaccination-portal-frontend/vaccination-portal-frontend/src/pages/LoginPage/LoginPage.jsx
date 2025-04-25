@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../api/axiosInstance";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -14,10 +14,7 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:9091/api/auth/signin",
-        formData
-      );
+      const response = await axiosInstance.post("/auth/signin", formData);
       const { token } = response.data.data;
       localStorage.setItem("token", token);
       navigate("/home");
