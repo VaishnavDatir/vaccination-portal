@@ -1,12 +1,63 @@
-# React + Vite
+# 🏫 School Vaccination Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application to manage student records and vaccination drives for a school or institution.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Project Overview
 
-## Expanding the ESLint configuration
+This portal allows:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧑‍🏫 Manage student data (add, edit, view, upload via CSV)
+- 💉 Track vaccination records for each student
+- 🗓️ Manage vaccination drives
+- 🔍 Search students by name or roll number
+- 📁 Upload student data from CSV
+- ⚡ Clean and modern UI
+- 🔐 Token-based secure APIs (coming soon)
+
+---
+
+## 🚀 Tech Stack
+
+- **Frontend:** React.js + Vite
+- **Architecture:** MVVM (Model-View-ViewModel) Pattern
+- **Routing:** React Router v6
+- **Styling:** Bootstrap 5 + Custom CSS
+- **Backend:** Spring Boot (Your API on `localhost:9091`)
+- **API Testing/Docs:** Swagger UI
+
+---
+
+## 🏗️ Project Structure
+
+```plaintext
+vaccination-portal-frontend/
+├── node_modules/
+├── public/
+├── src/
+│   ├── api/                  # API request functions
+│   ├── assets/               # Images, icons, etc.
+│   ├── components/           # Reusable UI components
+│   ├── hooks/                # Custom React hooks
+│   ├── js/                   # JavaScript utilities (if any)
+│   ├── layout/               # Common layout (Navbar, Footer etc.)
+│   ├── models/               # Type models and data structures
+│   ├── scss/                 # Styling (SCSS / CSS)
+│   └── pages/                # Pages
+│       ├── HomePage/
+│       ├── LoginPage/
+│       ├── StudentPages/
+│           ├── AddStudentPage/
+│           ├── EditStudentPage/
+│           ├── ListStudentsPage/
+│           ├── AddVaccinationPage/
+│           ├── ViewStudentPage/
+│       ├── VaccinationPages/
+│           ├── AddDrivePage/
+│           ├── EditVaccinationDrivePage/
+│           ├── ListVaccinationDrivesPage/
+├── App.jsx                   # Main routing configuration
+├── App.css                    # Global CSS
+└── index.js                   # React root
+```
