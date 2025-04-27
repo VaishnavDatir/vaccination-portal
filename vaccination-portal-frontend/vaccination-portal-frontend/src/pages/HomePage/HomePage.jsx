@@ -85,9 +85,9 @@ function SummaryCards({ summary }) {
         </div>
       </div>
       <div className="col-md-6">
-        <div className="glass-card p-4 text-center">
+        <div className="glass-card p-4 text-center bg-success text-white">
           <h6>Total Vaccinated</h6>
-          <h2 className="text-success">{summary?.totalVaccinated}</h2>
+          <h2 className="text-white">{summary?.totalVaccinated}</h2>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@ function GradeSection({ summary }) {
         <div ref={dragRef} className="grade-scroll-wrapper mb-5">
           {gradeData.map((item, idx) => (
             <div key={idx} className="grade-card">
-              <h6 className="mb-1">{item.grade}</h6>
+              <h6 className="mb-1">Grade {item.grade}</h6>
               <h4 className="text-success">{item.vaccinationPercentage}%</h4>
             </div>
           ))}

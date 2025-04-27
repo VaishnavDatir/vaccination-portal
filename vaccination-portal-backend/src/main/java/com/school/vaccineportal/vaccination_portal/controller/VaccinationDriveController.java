@@ -67,6 +67,22 @@ public class VaccinationDriveController {
         return response;
     }
 
+    @ApiOperation(value = "Get all active vaccination grade", response = List.class)
+    @GetMapping("/active/{grade}")
+    public ApiResponse<List<TVaccinationDrivesDto>> getAllActiveVaccinationDrives(
+            @ApiParam(value = "Grade for which vaccinations are active.", required = true) @PathVariable int grade) {
+
+        List<TVaccinationDrivesDto> drives = vaccinationDriveService.getAllActiveVaccinationDrives(grade);
+
+        ApiResponse<List<TVaccinationDrivesDto>> response = new ApiResponse<>();
+        response.setSuccess(true);
+        response.setMessage("All active vaccination drive fetched");
+        response.setData(drives);
+        response.setStatus(HttpStatus.OK);
+
+        return response;
+    }
+
     @ApiOperation(value = "Get vaccination drive by ID", response = TVaccinationDrivesDto.class)
     @GetMapping("/{driveId}")
     public ApiResponse<TVaccinationDrivesDto> getVaccinationDriveById(

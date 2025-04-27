@@ -3,6 +3,7 @@ package com.school.vaccineportal.vaccination_portal.repository.implementation;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -111,5 +112,14 @@ public class VaccinationDriveDao implements IVaccinationDriveDao {
 
         logger.debug("Counting VACCINATION_DRIVES");
         return jdbcTemplate.queryForObject(query, params, Integer.class);
+    }
+
+    @Override
+    public List<TVaccinationDrivesDto> getAllActiveVaccinationDrives(int grade) {
+        String query = LoadJdbcQueries.getQueryById("GET_ALL_VACCINATION_DRIVES_ACTIVE");
+        logger.debug("Query for GET_ALL_VACCINATION_DRIVES_ACTIVE: {}", query);
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue(QueryParams.GRADE, StringUtils.join("Grade ", grade));
+        return jdbcTemplate.query(query, params, new BeanPropertyRowMapper<>(TVaccinationDrivesDto.class));
     }
 }

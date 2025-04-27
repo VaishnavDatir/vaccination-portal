@@ -43,7 +43,11 @@ public class WebSecurityConfig {
                                                 corsConfigurationSource()))
                                 .authorizeHttpRequests(auth -> auth
                                                 .requestMatchers(
-                                                                new AntPathRequestMatcher("/api/auth/**"))
+                                                                new AntPathRequestMatcher("/api/auth/**"),
+                                                                new AntPathRequestMatcher("/v2/api-docs/**"),
+                                                                new AntPathRequestMatcher("/swagger-ui/**"),
+                                                                new AntPathRequestMatcher("/swagger-resources/**"),
+                                                                new AntPathRequestMatcher("/webjars/**"))
                                                 .permitAll()
                                                 .anyRequest().authenticated())
                                 .exceptionHandling(handling -> handling

@@ -14,6 +14,8 @@ public interface IVaccinationDriveDao {
     // Get all vaccination drives
     public List<TVaccinationDrivesDto> getAllVaccinationDrives(int offset, int limit);
 
+    public List<TVaccinationDrivesDto> getAllActiveVaccinationDrives(int grade);
+
     // Update a vaccination drive
     public int updateVaccinationDrive(TVaccinationDrivesDto drive);
 

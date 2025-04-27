@@ -36,6 +36,11 @@ public class VaccinationDriveService implements IVaccinationDriveService {
     }
 
     @Override
+    public List<TVaccinationDrivesDto> getAllActiveVaccinationDrives(int grade) {
+        return vaccinationDriveDao.getAllActiveVaccinationDrives(grade);
+    }
+
+    @Override
     public Integer getTotalVaccinationDrivesCount() {
         return vaccinationDriveDao.getTotalVaccinationDrivesCount();
     }

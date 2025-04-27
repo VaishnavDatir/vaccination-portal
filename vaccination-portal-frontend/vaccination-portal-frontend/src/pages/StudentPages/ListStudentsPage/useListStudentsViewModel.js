@@ -5,6 +5,7 @@ export default function useListStudentsViewModel() {
   const [students, setStudents] = useState([]);
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState(0);
+  const [searchText, setSearchText] = useState("");
   const size = 10;
 
   const token = localStorage.getItem("token");
@@ -51,5 +52,8 @@ export default function useListStudentsViewModel() {
     size,
     setPage,
     handleCsvUpload,
+    searchText,
+    setSearchText,
+    fetchStudents, // 🔥 added fetchStudents here
   };
 }

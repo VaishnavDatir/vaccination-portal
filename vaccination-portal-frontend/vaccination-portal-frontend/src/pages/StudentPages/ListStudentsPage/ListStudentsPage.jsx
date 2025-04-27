@@ -4,11 +4,26 @@ import "./ListStudentsPage.css";
 import useListStudentsViewModel from "./useListStudentsViewModel";
 
 export default function ListStudentsPage() {
-  const { students, page, total, size, setPage, handleCsvUpload } =
-    useListStudentsViewModel();
+  const {
+    students,
+    page,
+    total,
+    size,
+    setPage,
+    handleCsvUpload,
+    searchText,
+    setSearchText,
+  } = useListStudentsViewModel();
 
   const navigate = useNavigate();
   const totalPages = Math.ceil(total / size);
+
+  const filteredStudents = students.filter((student) => {
+    const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
+    const rollNo = (student.rollNo || "").toLowerCase();
+    const query = searchText.toLowerCase();
+    return fullName.includes(query) || rollNo.includes(query);
+  });
 
   const onCsvChange = (e) => {
     const file = e.target.files[0];
@@ -24,7 +39,7 @@ export default function ListStudentsPage() {
     <div className="bg-light min-vh-100">
       <NavBar />
       <div className="container py-5">
-        <MyHeader />
+        <MyHeader searchText={searchText} setSearchText={setSearchText} />
         <DataTable />
         <PaginationBtns />
       </div>
@@ -49,11 +64,19 @@ export default function ListStudentsPage() {
     );
   }
 
-  function MyHeader() {
+  function MyHeader({ searchText, setSearchText }) {
     return (
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="text-primary m-0">Student Records</h2>
         <div>
+          <input
+            type="text"
+            className="form-control d-inline-block me-2"
+            placeholder="🔍 Search name or roll no"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            style={{ width: "250px" }}
+          />
           <input
             type="file"
             accept=".csv"
@@ -95,14 +118,14 @@ export default function ListStudentsPage() {
             </tr>
           </thead>
           <tbody>
-            {students.length === 0 ? (
+            {filteredStudents.length === 0 ? (
               <tr>
                 <td colSpan="8" className="text-center text-muted">
                   No students found.
                 </td>
               </tr>
             ) : (
-              students.map((student, index) => (
+              filteredStudents.map((student, index) => (
                 <tr key={student.studentId}>
                   <td>{page * size + index + 1}</td>
                   <td>
@@ -115,7 +138,7 @@ export default function ListStudentsPage() {
                   <td>{new Date(student.updateTs).toLocaleString()}</td>
                   <td>
                     <button
-                      className="btn btn-sm btn-outline-secondary"
+                      className="btn btn-sm btn-outline-secondary me-1"
                       onClick={() =>
                         navigate(`/students/edit/${student.studentId}`)
                       }
@@ -123,14 +146,31 @@ export default function ListStudentsPage() {
                       ✏️ Edit
                     </button>
                     <button
-                      className="btn btn-sm btn-outline-success"
+                      className="btn btn-sm btn-outline-success me-1"
                       onClick={() =>
                         navigate(
-                          `/students/${student.studentId}/add-vaccination`
+                          `/students/add-vaccination/${student.studentId}`,
+                          {
+                            state: {
+                              studentId: student.studentId,
+                              firstName: student.firstName,
+                              lastName: student.lastName,
+                              rollNo: student.rollNo,
+                              grade: student.grade,
+                            },
+                          }
                         )
                       }
                     >
                       💉 Add Vaccination
+                    </button>
+                    <button
+                      className="btn btn-sm btn-outline-primary me-1"
+                      onClick={() =>
+                        navigate(`/students/view/${student.studentId}`)
+                      }
+                    >
+                      👀 View
                     </button>
                   </td>
                 </tr>

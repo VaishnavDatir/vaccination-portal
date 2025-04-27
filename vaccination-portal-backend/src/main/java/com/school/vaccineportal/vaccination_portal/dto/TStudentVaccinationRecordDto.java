@@ -7,6 +7,7 @@ public class TStudentVaccinationRecordDto {
     private Integer recordId;
     private Integer studentId;
     private Integer driveId;
+    private String driveName;
     private LocalDate vaccinationDate;
     private Integer doseNumber;
     private String status;
@@ -68,11 +69,25 @@ public class TStudentVaccinationRecordDto {
         this.updateTs = updateTs;
     }
 
+    /**
+     * @return the driveName
+     */
+    public String getDriveName() {
+        return driveName;
+    }
+
+    /**
+     * @param driveName the driveName to set
+     */
+    public void setDriveName(String driveName) {
+        this.driveName = driveName;
+    }
+
     @Override
     public String toString() {
         return "TStudentVaccinationRecordDto [recordId=" + recordId + ", studentId=" + studentId + ", driveId="
-                + driveId + ", vaccinationDate=" + vaccinationDate + ", doseNumber=" + doseNumber + ", status=" + status
-                + ", updateTs=" + updateTs + "]";
+                + driveId + ", driveName=" + driveName + ", vaccinationDate=" + vaccinationDate + ", doseNumber="
+                + doseNumber + ", status=" + status + ", updateTs=" + updateTs + "]";
     }
 
 }
