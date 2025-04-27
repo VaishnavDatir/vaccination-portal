@@ -20,9 +20,8 @@ public class ReportService implements IReportService {
         this.reportDao = reportDao;
     }
 
-    public List<VaccinationReportDto> getVaccinationReport(String vaccineName, int page, int size) {
-        int offset = (page - 1) * size;
-        return reportDao.getVaccinationReport(vaccineName, size, offset);
+    public List<VaccinationReportDto> getVaccinationReport(String vaccineName, String grade) {
+        return reportDao.getVaccinationReport(vaccineName, grade);
     }
 
     public int getVaccinationReportCount(String vaccineName) {

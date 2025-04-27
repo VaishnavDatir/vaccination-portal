@@ -50,7 +50,7 @@ export default function EditStudentPage() {
     try {
       const payload = {
         ...formData,
-        grade: `Grade ${formData.grade}`,
+        grade: `${formData.grade}`,
       };
       await axiosInstance.put(`/students/${studentId}`, payload, {
         headers: { Authorization: `Bearer ${token}` },

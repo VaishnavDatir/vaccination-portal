@@ -68,6 +68,12 @@ function NavBar() {
           >
             💉 Vaccination Drive
           </button>
+          <button
+            className="btn btn-outline-primary"
+            onClick={() => (window.location.href = "/reports")}
+          >
+            📋 Report
+          </button>
         </div>
       </div>
     </nav>

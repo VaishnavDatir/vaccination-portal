@@ -2,6 +2,7 @@ package com.school.vaccineportal.vaccination_portal.repository.implementation;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -25,13 +26,12 @@ public class ReportDao implements IReportDao {
     }
 
     @Override
-    public List<VaccinationReportDto> getVaccinationReport(String vaccineName, int limit, int offset) {
+    public List<VaccinationReportDto> getVaccinationReport(String vaccineName, String grade) {
         String query = LoadJdbcQueries.getQueryById("GET_VACCINATION_REPORT");
 
         MapSqlParameterSource params = new MapSqlParameterSource();
-        params.addValue(QueryParams.VACCINE_NAME, vaccineName);
-        params.addValue(QueryParams.LIMIT, limit);
-        params.addValue(QueryParams.OFFSET, offset);
+        params.addValue(QueryParams.VACCINE_NAME, StringUtils.isBlank(vaccineName) ? null : vaccineName);
+        params.addValue(QueryParams.GRADE, StringUtils.isBlank(grade) ? null : grade);
 
         logger.debug("Fetching vaccination report with params: {}", params);
 

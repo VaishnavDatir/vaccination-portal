@@ -34,12 +34,10 @@ public class ReportController {
     @ApiOperation(value = "Get Vaccination Report", notes = "Fetch list of vaccinated students with filters and pagination")
     public ResponseEntity<ApiResponse<List<VaccinationReportDto>>> getVaccinationReport(
             @ApiParam(value = "Vaccine Name for filtering", required = false) @RequestParam(required = false) String vaccineName,
-            @ApiParam(value = "Page number (starting from 1)", example = "1") @RequestParam(defaultValue = "1") int page,
-            @ApiParam(value = "Number of records per page", example = "10") @RequestParam(defaultValue = "10") int size) {
-        List<VaccinationReportDto> reports = reportService.getVaccinationReport(vaccineName, page, size);
-        int totalCount = reportService.getVaccinationReportCount(vaccineName);
+            @ApiParam(value = "Grade for filtering", required = false) @RequestParam(required = false) String grade) {
+        List<VaccinationReportDto> reports = reportService.getVaccinationReport(vaccineName, grade);
 
         return new ResponseEntity<>(
-                ApiResponse.success(reports, HttpStatus.OK, totalCount), HttpStatus.OK);
+                ApiResponse.success(reports, HttpStatus.OK), HttpStatus.OK);
     }
 }

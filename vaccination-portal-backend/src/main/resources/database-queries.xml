@@ -129,9 +129,9 @@
 									t_vaccination_drives d ON r.drive_id = d.drive_id
 								WHERE 
 									(:VACCINE_NAME IS NULL OR d.vaccine_name = :VACCINE_NAME)
+									AND (:GRADE IS NULL OR s.grade = :GRADE)
 								ORDER BY 
-									r.vaccination_date DESC
-								LIMIT :LIMIT OFFSET :OFFSET"
+									r.vaccination_date DESC"
 				/>
 
 				<entry key="GET_VACCINATION_REPORT_COUNT"

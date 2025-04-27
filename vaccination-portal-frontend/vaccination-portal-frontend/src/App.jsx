@@ -11,6 +11,7 @@ import ViewStudentPage from "./pages/StudentPages/ViewStudentPage/ViewStudentPag
 import AddDrivePage from "./pages/VaccinationPages/AddDrivePage/AddDrivePage";
 import EditVaccinationDrivePage from "./pages/VaccinationPages/EditVaccinationDrivePage/EditVaccinationDrivePage";
 import ListVaccinationDrivesPage from "./pages/VaccinationPages/ListVaccinationDrivesPage/ListVaccinationDrivesPage";
+import VaccinationReportPage from "./pages/VaccinationPages/VaccinationReportPage/VaccinationReportPage";
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
               path="/vaccines/edit/:vaccinationId"
               element={<EditVaccinationDrivePage />}
             />
+
+            <Route path="/reports" element={<VaccinationReportPage />} />
           </Routes>
         </main>
       </Layout>
