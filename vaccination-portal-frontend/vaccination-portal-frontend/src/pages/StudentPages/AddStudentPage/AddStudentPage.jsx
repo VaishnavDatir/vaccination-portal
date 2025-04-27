@@ -31,7 +31,7 @@ export default function AddStudentPage() {
 
     const payload = {
       ...form,
-      grade: `Grade ${form.grade}`,
+      grade: `${form.grade}`,
     };
 
     try {

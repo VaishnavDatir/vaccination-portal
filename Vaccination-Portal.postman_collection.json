@@ -1,0 +1,1699 @@
+{
+	"info": {
+		"_postman_id": "c96e67aa-1e9f-4480-b0f2-ff2402fe8877",
+		"name": "Vaccination-Portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16643455"
+	},
+	"item": [
+		{
+			"name": "Student: Add Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Stark\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Stark\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 20:28:29 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Student added successfully\",\n    \"data\": null,\n    \"status\": \"CREATED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Student: Update Student",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Starkk\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/students/:studentId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"students",
+						":studentId"
+					],
+					"variable": [
+						{
+							"key": "studentId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Starkk\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/students/:studentId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"students",
+								":studentId"
+							],
+							"variable": [
+								{
+									"key": "studentId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 20:34:19 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Student updated successfully\",\n    \"data\": null,\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Student: Get All Students",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Stark\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/students?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"students"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Stark\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"students"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 20:32:25 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"All students fetched\",\n    \"data\": [\n        {\n            \"studentId\": 1,\n            \"firstName\": \"Tony\",\n            \"lastName\": \"Stark\",\n            \"gender\": \"M\",\n            \"grade\": \"10\",\n            \"email\": \"tony.stark@avengers.com\",\n            \"rollNo\": \"A001\",\n            \"updateTs\": \"2025-04-20T01:58:29\"\n        }\n    ],\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Student: Get Student By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/students/:studentId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"students",
+						":studentId"
+					],
+					"variable": [
+						{
+							"key": "studentId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/students/:studentId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"students",
+								":studentId"
+							],
+							"variable": [
+								{
+									"key": "studentId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 20:29:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Student fetched successfully\",\n    \"data\": {\n        \"studentId\": 1,\n        \"firstName\": \"Tony\",\n        \"lastName\": \"Stark\",\n        \"gender\": \"M\",\n        \"grade\": \"10\",\n        \"email\": \"tony.stark@avengers.com\",\n        \"rollNo\": \"A001\",\n        \"updateTs\": \"2025-04-20T01:58:29\"\n    },\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Student: Delete Student",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Stark\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/students/:studentId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"students",
+						":studentId"
+					],
+					"variable": [
+						{
+							"key": "studentId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Tony\",\r\n    \"lastName\": \"Stark\",\r\n    \"email\": \"tony.stark@avengers.com\",\r\n    \"grade\": \"10\",\r\n    \"gender\": \"M\",\r\n    \"rollNo\": \"A001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/students/:studentId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"students",
+								":studentId"
+							],
+							"variable": [
+								{
+									"key": "studentId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 20:36:25 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Student deleted successfully\",\n    \"data\": null,\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Student: Bulk upload students via CSV",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/VAISHNAV/Desktop/students-data.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/students/upload-csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"students",
+						"upload-csv"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Student: Bulk upload students via CSV eg",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/VAISHNAV/Desktop/students-data.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/students/upload-csv",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"students",
+								"upload-csv"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 20 Apr 2025 09:09:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"successCount\": 2,\n        \"failureCount\": 0,\n        \"failedRecords\": []\n    },\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Vaccination: Add Vaccination Drive",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vaccineName\": \"Drive 1\",\r\n    \"startDate\": \"2025-05-01\",\r\n    \"endDate\": \"2025-05-10\",\r\n    \"availableDoses\": 500,\r\n    \"gradeEligibility\": \"A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-drives",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-drives"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add Vaccination Drive eg",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vaccineName\": \"Drive 1\",\r\n    \"startDate\": \"2025-05-01\",\r\n    \"endDate\": \"2025-05-10\",\r\n    \"availableDoses\": 500,\r\n    \"gradeEligibility\": \"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-drives",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-drives"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 21:36:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"driveId\": null,\n        \"vaccineName\": \"Drive 1\",\n        \"startDate\": \"2025-05-01\",\n        \"endDate\": \"2025-05-10\",\n        \"availableDoses\": 500,\n        \"gradeEligibility\": \"A\",\n        \"updateTs\": null\n    },\n    \"status\": \"CREATED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Vaccination: Update Vaccination Drive",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vaccineName\": \"Drive 1\",\r\n    \"startDate\": \"2025-05-01\",\r\n    \"endDate\": \"2025-05-10\",\r\n    \"availableDoses\": 500,\r\n    \"gradeEligibility\": \"AA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-drives/:vaccinationId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-drives",
+						":vaccinationId"
+					],
+					"variable": [
+						{
+							"key": "vaccinationId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Vaccination Drive eg",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vaccineName\": \"Drive 1\",\r\n    \"startDate\": \"2025-05-01\",\r\n    \"endDate\": \"2025-05-10\",\r\n    \"availableDoses\": 500,\r\n    \"gradeEligibility\": \"AA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-drives/:vaccinationId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-drives",
+								":vaccinationId"
+							],
+							"variable": [
+								{
+									"key": "vaccinationId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 21:42:20 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"driveId\": 1,\n        \"vaccineName\": \"Drive 1\",\n        \"startDate\": \"2025-05-01\",\n        \"endDate\": \"2025-05-10\",\n        \"availableDoses\": 500,\n        \"gradeEligibility\": \"AA\",\n        \"updateTs\": null\n    },\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Vaccination: Get All Vaccination Drives",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-drives?page=0&size=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-drives"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Vaccination Drives eg",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-drives",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-drives"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 21:38:18 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"driveId\": 1,\n            \"vaccineName\": \"Drive 1\",\n            \"startDate\": \"2025-05-01\",\n            \"endDate\": \"2025-05-10\",\n            \"availableDoses\": 500,\n            \"gradeEligibility\": \"A\",\n            \"updateTs\": \"2025-04-20T03:06:31\"\n        }\n    ],\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Vaccination: Get All Vaccination Drives Active",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-drives/active/:grade",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-drives",
+						"active",
+						":grade"
+					],
+					"variable": [
+						{
+							"key": "grade",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Vaccination Drives eg",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-drives",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-drives"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 21:38:18 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"driveId\": 1,\n            \"vaccineName\": \"Drive 1\",\n            \"startDate\": \"2025-05-01\",\n            \"endDate\": \"2025-05-10\",\n            \"availableDoses\": 500,\n            \"gradeEligibility\": \"A\",\n            \"updateTs\": \"2025-04-20T03:06:31\"\n        }\n    ],\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Vaccination: Get Vaccination Drive by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-drives/:vaccinationId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-drives",
+						":vaccinationId"
+					],
+					"variable": [
+						{
+							"key": "vaccinationId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Vaccination Drive by ID eg",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-drives/:vaccinationId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-drives",
+								":vaccinationId"
+							],
+							"variable": [
+								{
+									"key": "vaccinationId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 21:39:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"driveId\": 1,\n        \"vaccineName\": \"Drive 1\",\n        \"startDate\": \"2025-05-01\",\n        \"endDate\": \"2025-05-10\",\n        \"availableDoses\": 500,\n        \"gradeEligibility\": \"A\",\n        \"updateTs\": \"2025-04-20T03:06:31\"\n    },\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Vaccination: Delete Vaccination Drive",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-drives/:vaccinationId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-drives",
+						":vaccinationId"
+					],
+					"variable": [
+						{
+							"key": "vaccinationId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Vaccination: Delete Vaccination Drive eg",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-drives/:vaccinationId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-drives",
+								":vaccinationId"
+							],
+							"variable": [
+								{
+									"key": "vaccinationId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 21:43:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Vaccination drive with ID 1 not found.\",\n    \"data\": null,\n    \"status\": \"BAD_REQUEST\"\n}"
+				}
+			]
+		},
+		{
+			"name": "SV: Add Vaccination Record",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 2,\r\n    \"driveId\": 2,\r\n    \"vaccinationDate\": \"2025-05-10\",\r\n    \"doseNumber\": 1,\r\n    \"status\": \"VACCINATED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-records",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-records"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "SV: Add Vaccination Record eg",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentId\": 2,\r\n    \"driveId\": 2,\r\n    \"vaccinationDate\": \"2025-05-10\",\r\n    \"doseNumber\": 1,\r\n    \"status\": \"VACCINATED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-records"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 22:26:45 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": null,\n    \"status\": \"CREATED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "SV: Get Records by Student ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"studentId\": 2,\r\n    \"driveId\": 2,\r\n    \"vaccinationDate\": \"2025-05-10\",\r\n    \"doseNumber\": 1,\r\n    \"status\": \"VACCINATED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-records/student/:studentId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-records",
+						"student",
+						":studentId"
+					],
+					"variable": [
+						{
+							"key": "studentId",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "SV: Get Records by Student ID eg",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentId\": 2,\r\n    \"driveId\": 2,\r\n    \"vaccinationDate\": \"2025-05-10\",\r\n    \"doseNumber\": 1,\r\n    \"status\": \"VACCINATED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-records/student/:studentId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-records",
+								"student",
+								":studentId"
+							],
+							"variable": [
+								{
+									"key": "studentId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 22:28:05 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"recordId\": 3,\n            \"studentId\": 2,\n            \"driveId\": 2,\n            \"vaccinationDate\": \"2025-05-10\",\n            \"doseNumber\": 1,\n            \"status\": \"VACCINATED\",\n            \"updateTs\": \"2025-04-20T03:56:45\"\n        }\n    ],\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "SV: Update Vaccination Record",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"recordId\":1,\r\n    \"studentId\": 2,\r\n    \"driveId\": 2,\r\n    \"vaccinationDate\": \"2025-05-10\",\r\n    \"doseNumber\": 1,\r\n    \"status\": \"VACCINATED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-records",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-records"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "SV: Add Vaccination Record eg",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recordId\":1,\r\n    \"studentId\": 2,\r\n    \"driveId\": 2,\r\n    \"vaccinationDate\": \"2025-05-10\",\r\n    \"doseNumber\": 1,\r\n    \"status\": \"VACCINATED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-records",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-records"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 22:29:54 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": null,\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "SV: Delete Vaccination Record",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/vaccination-records/:recordId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"vaccination-records",
+						":recordId"
+					],
+					"variable": [
+						{
+							"key": "recordId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "SV: Delete Vaccination Record eg",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/vaccination-records/:recordId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"vaccination-records",
+								":recordId"
+							],
+							"variable": [
+								{
+									"key": "recordId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 22:52:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Dashboard: Get Dashboard Summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/dashboard/summary",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"dashboard",
+						"summary"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Dashboard: Get Dashboard Summary eg",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/dashboard/summary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"dashboard",
+								"summary"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 19 Apr 2025 22:53:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": {\n        \"totalStudents\": 1,\n        \"totalVaccinated\": 1,\n        \"vaccinatedPercentageByGrade\": [\n            {\n                \"grade\": \"10\",\n                \"vaccinationPercentage\": 100\n            }\n        ],\n        \"upcomingVaccinationDrives\": [\n            {\n                \"driveId\": 2,\n                \"vaccineName\": \"Drive 1\",\n                \"startDate\": \"2025-05-01\",\n                \"endDate\": \"2025-05-10\"\n            }\n        ]\n    },\n    \"status\": \"OK\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Report: GET Vaccination Report",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTI2MjcwMywiZXhwIjoxNzQ1MjY2MzAzfQ.-5mY-_jb1ZUL8CLr7dnARkzXwS4PvAfGUl7Yduk1bVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9091/api/reports/vaccination?vaccineName=Drive 1&grade=10&page=1&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"reports",
+						"vaccination"
+					],
+					"query": [
+						{
+							"key": "vaccineName",
+							"value": "Drive 1"
+						},
+						{
+							"key": "grade",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Report: GET Vaccination Report eg1",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/reports/vaccination",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"reports",
+								"vaccination"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 20 Apr 2025 09:54:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"firstName\": \"Tony\",\n            \"lastName\": \"Stark\",\n            \"grade\": \"10\",\n            \"rollNo\": \"A001\",\n            \"email\": \"tony.stark@avengers.com\",\n            \"vaccineName\": \"Drive 1\",\n            \"vaccinationDate\": \"2025-05-10\",\n            \"status\": \"VACCINATED\"\n        }\n    ],\n    \"status\": \"OK\",\n    \"totalCount\": 1\n}"
+				},
+				{
+					"name": "Report: GET Vaccination Report eg2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9091/api/reports/vaccination?vaccineName=Drive 1&grade=10&page=1&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"api",
+								"reports",
+								"vaccination"
+							],
+							"query": [
+								{
+									"key": "vaccineName",
+									"value": "Drive 1"
+								},
+								{
+									"key": "grade",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 20 Apr 2025 09:55:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"firstName\": \"Tony\",\n            \"lastName\": \"Stark\",\n            \"grade\": \"10\",\n            \"rollNo\": \"A001\",\n            \"email\": \"tony.stark@avengers.com\",\n            \"vaccineName\": \"Drive 1\",\n            \"vaccinationDate\": \"2025-05-10\",\n            \"status\": \"VACCINATED\"\n        }\n    ],\n    \"status\": \"OK\",\n    \"totalCount\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Auth: Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NTc1ODUyMCwiZXhwIjoxNzQ1NzYyMTIwfQ.5ILOkZ_tRFOXTHsXTa2-3bPUVlRDpA8Bedln0ZDkIWY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

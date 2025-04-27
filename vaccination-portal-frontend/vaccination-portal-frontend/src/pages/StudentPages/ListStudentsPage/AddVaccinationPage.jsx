@@ -26,7 +26,11 @@ export default function AddVaccinationPage() {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
-      setVaccinations(res.data.data);
+      const drives = res.data.data.map((drive) => ({
+        ...drive,
+        id: drive.driveId,
+      }));
+      setVaccinations(drives);
     } catch (error) {
       console.error("Failed to fetch vaccination drives", error);
     }
@@ -66,6 +70,7 @@ export default function AddVaccinationPage() {
     setSelectedVaccinationId(selectedId);
 
     const drive = vaccinations.find((d) => d.id === Number(selectedId));
+
     if (drive) {
       setSelectedDriveDetails(drive);
 
