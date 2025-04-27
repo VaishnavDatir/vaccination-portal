@@ -29,7 +29,7 @@ This portal allows:
 ## 🚀 Tech Stack
 
 - **Frontend:** React.js + Vite
-- **Architecture:** MVVM (Model-View-ViewModel) Pattern
+- **Architecture:** MVVM (Model-View-ViewModel) Pattern for frontend and MVC (Model-View-Control) Pattern for backend
 - **Routing:** React Router v6
 - **Styling:** Bootstrap 5 + Custom CSS
 - **Backend:** Spring Boot (Your API on `localhost:9091`)
@@ -43,6 +43,94 @@ This portal allows:
 - **Backend Running at:** http://localhost:9091
 - **Swagger API Docs:** http://localhost:9091/swagger-ui/
 - **Database:** MySQL (Localhost)
+
+---
+
+---
+
+## 🚀 Setup Instructions
+
+### 1. Database
+
+#### Prerequisites:
+- My Sql 
+
+#### Steps:
+1. Create a MySQL database named `vaccination_portal`
+
+2. Run the DDL script given:
+https://github.com/VaishnavDatir/vaccination-portal/blob/main/DDL.sql
+
+### 2. Backend (Spring Boot)
+
+#### Prerequisites:
+- Java 17+
+- Maven
+
+#### Steps:
+1. Navigate to the backend directory:
+   ```bash
+   cd vaccination-portal-backend
+   ```
+
+2. Install dependencies and build:
+   ```bash
+   mvn clean install
+   ```
+
+3. Run the application:
+   ```bash
+   mvn spring-boot:run
+   ```
+
+4. The backend will start at:  
+   [http://localhost:8080](http://localhost:8080)
+
+---
+
+### 3. Frontend (React + Vite)
+
+#### Prerequisites:
+- Node.js (v18+)
+- npm
+
+#### Steps:
+1. Navigate to the frontend directory:
+   ```bash
+   cd vaccination-portal-frontend/vaccination-portal-frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the `vaccination-portal-frontend` folder and add:
+   ```plaintext
+   VITE_API_BASE_URL=http://localhost:8080
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open the app at:  
+   [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🛠️ Built With
+
+- **Frontend:**  
+  - [React](https://reactjs.org/)
+  - [Vite](https://vitejs.dev/)
+
+- **Backend:**  
+  - [Spring Boot](https://spring.io/projects/spring-boot)
+  
+- **Database:**  
+  - [My SQL](https://mysql.com/) 
 
 ---
 
@@ -92,3 +180,6 @@ vaccination-portal/
 
 ### 9. Vaccination Drive Details
 <img src="Screenshots/vaccinationPageFill.jpeg" alt="Vaccination Page Fill" width="400"/>
+
+### 10. Report page
+<img src="Screenshots/reportPage.jpeg" alt="Report Page Fill" width="400"/>
